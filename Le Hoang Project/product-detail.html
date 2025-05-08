@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="product-detail">
+        <img id="product-img" src="" alt="Hình ảnh sản phẩm">
+        <h1 id="product-name"></h1>
+        <p><strong>Giá: </strong><span id="product-price"></span> <del id="product-old-price"></del></p>
+        <p id="product-description"></p>
+        <a href="index.html">⬅ Quay lại</a>
+    </div>
+
+    <script>
+        // Danh sách sản phẩm
+        const products = [
+            { id: 1, name: "DH-C3A", price: "400.000₫", oldPrice: "690.000₫", img: "images/product1.jpg", description: "Camera chất lượng cao, hỗ trợ giám sát 24/7." },
+            { id: 2, name: "DH-H3AE", price: "330.000₫", oldPrice: "690.000₫", img: "images/product2.jpg", description: "Hệ thống giám sát chuyên nghiệp, dễ sử dụng." },
+            { id: 3, name: "DH-H2C", price: "430.000₫", oldPrice: "690.000₫", img: "images/product3.jpg", description: "Thiết kế nhỏ gọn, phù hợp với mọi không gian." },
+            { id: 4, name: "DH-IPC-HFW1230DT-STW", price: "530.000₫", oldPrice: "690.000₫", img: "images/product4.jpg", description: "Camera IP hiện đại, độ phân giải cao." },
+            { id: 5, name: "DH-IPC-HDW1430DT-STW", price: "530.000₫", oldPrice: "690.000₫", img: "images/product5.jpg", description: "Hỗ trợ hồng ngoại ban đêm, chống nước IP67." },
+            { id: 6, name: "DH-F2C-LED", price: "330.000₫", oldPrice: "690.000₫", img: "images/product6.jpg", description: "Camera có LED hỗ trợ quay đêm rõ nét." },
+            { id: 7, name: "DH-T2A-LED", price: "330.000₫", oldPrice: "690.000₫", img: "images/product7.jpg", description: "Công nghệ chống rung, hình ảnh sắc nét." },
+            { id: 8, name: "DH-SD2A200HB-GN-AW-PV-S2", price: "330.000₫", oldPrice: "690.000₫", img: "images/product8.jpg", description: "Hỗ trợ xoay 360 độ, quan sát toàn diện." },
+            { id: 9, name: "DH-P3B-PV", price: "330.000₫", oldPrice: "690.000₫", img: "images/product9.jpg", description: "Dễ dàng lắp đặt, kết nối không dây." },
+            { id: 10, name: "DS-2CD2421G0-IW", price: "439.000₫", oldPrice: "690.000₫", img: "images/product10.jpg", description: "Chống ngược sáng, ghi hình rõ ràng trong môi trường tối." }
+        ];
+
+        // Lấy ID từ URL
+        const params = new URLSearchParams(window.location.search);
+        const productId = parseInt(params.get("id"));
+
+        // Tìm sản phẩm theo ID
+        const product = products.find(p => p.id === productId);
+
+        // Hiển thị thông tin sản phẩm nếu tìm thấy
+        if (product) {
+            document.getElementById("product-img").src = product.img;
+            document.getElementById("product-name").innerText = product.name;
+            document.getElementById("product-price").innerText = product.price;
+            document.getElementById("product-old-price").innerText = product.oldPrice;
+            document.getElementById("product-description").innerText = product.description;
+        } else {
+            document.getElementById("product-detail").innerHTML = "<h2>Sản phẩm không tồn tại!</h2>";
+        }
+    </script>
+</body>
+</html>
